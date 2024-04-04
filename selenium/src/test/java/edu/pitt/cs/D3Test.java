@@ -26,6 +26,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+// import chrome driver
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class D3Test {
 
@@ -36,7 +38,11 @@ public class D3Test {
   @Before
   public void setUp() {
     // TODO: setup a headless browser
-    driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--headless");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+    driver = new ChromeDriver(options);
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
 
